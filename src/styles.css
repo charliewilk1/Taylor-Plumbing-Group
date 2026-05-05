@@ -1,0 +1,139 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-steel: var(--steel);
+  --color-ember: var(--ember);
+  --color-ember-foreground: var(--ember-foreground);
+  --font-display: "Manrope", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.18 0.03 250);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.03 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.03 250);
+
+  /* Taylor Group royal blue */
+  --primary: oklch(0.38 0.18 255);
+  --primary-foreground: oklch(0.985 0.005 250);
+
+  --secondary: oklch(0.95 0.015 255);
+  --secondary-foreground: oklch(0.22 0.10 255);
+
+  --muted: oklch(0.965 0.01 255);
+  --muted-foreground: oklch(0.48 0.03 255);
+
+  --accent: oklch(0.93 0.025 255);
+  --accent-foreground: oklch(0.22 0.10 255);
+
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.985 0.005 250);
+
+  --border: oklch(0.90 0.015 255);
+  --input: oklch(0.90 0.015 255);
+  --ring: oklch(0.38 0.18 255);
+
+  /* Brand custom tokens */
+  --navy: oklch(0.38 0.18 255);
+  --navy-deep: oklch(0.22 0.14 255);
+  --steel: oklch(0.55 0.06 255);
+  --ember: oklch(0.68 0.19 45);           /* Taylor Group orange */
+  --ember-foreground: oklch(0.98 0.005 250);
+
+  --gradient-hero: linear-gradient(180deg, oklch(0.22 0.14 255 / 0.60) 0%, oklch(0.14 0.10 255 / 0.88) 100%);
+  --gradient-navy: linear-gradient(135deg, oklch(0.32 0.16 255) 0%, oklch(0.18 0.12 255) 100%);
+  --shadow-elevated: 0 30px 60px -25px oklch(0.22 0.14 255 / 0.35);
+  --shadow-card: 0 1px 2px oklch(0.22 0.14 255 / 0.04), 0 8px 24px -12px oklch(0.22 0.14 255 / 0.12);
+}
+
+.dark {
+  --background: oklch(0.14 0.08 255);
+  --foreground: oklch(0.98 0.005 250);
+  --card: oklch(0.20 0.10 255);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.20 0.10 255);
+  --popover-foreground: oklch(0.98 0.005 250);
+  --primary: oklch(0.92 0.012 250);
+  --primary-foreground: oklch(0.18 0.10 255);
+  --secondary: oklch(0.26 0.08 255);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.26 0.08 255);
+  --muted-foreground: oklch(0.7 0.03 255);
+  --accent: oklch(0.26 0.08 255);
+  --accent-foreground: oklch(0.98 0.005 250);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.55 0.06 255);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero { background-image: var(--gradient-hero); }
+  .bg-gradient-navy { background-image: var(--gradient-navy); }
+  .shadow-elevated { box-shadow: var(--shadow-elevated); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+  .container-x { padding-left: 1.5rem; padding-right: 1.5rem; }
+  @media (min-width: 1024px) {
+    .container-x { padding-left: 4rem; padding-right: 4rem; }
+  }
+}
+
+/* Hide Lovable / GPT-Engineer editor badge */
+[id*="lovable"],
+[class*="lovable"],
+[id*="gptengineer"],
+[class*="gptengineer"] {
+  display: none !important;
+}
